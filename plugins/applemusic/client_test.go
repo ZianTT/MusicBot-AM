@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"net/http"
 	"net/http/httptest"
+	"net/url"
 	"testing"
 	"time"
 )
@@ -47,8 +48,12 @@ func TestClientSearchUsesBearerToken(t *testing.T) {
 	if authHeader != "Bearer test-token" {
 		t.Fatalf("Authorization header = %q, want %q", authHeader, "Bearer test-token")
 	}
-	if rawQuery != "limit=1&query=IOSYS&type=song" {
-		t.Fatalf("raw query = %q", rawQuery)
+	values, err := url.ParseQuery(rawQuery)
+	if err != nil {
+		t.Fatalf("ParseQuery() error = %v", err)
+	}
+	if values.Get("query") != "IOSYS" || values.Get("type") != "song" || values.Get("limit") != "1" {
+		t.Fatalf("unexpected query values: %v", values)
 	}
 	if len(resp.Results.Songs.Data) != 1 || resp.Results.Songs.Data[0].ID != "1480785411" {
 		t.Fatalf("unexpected search response: %+v", resp.Results.Songs.Data)
