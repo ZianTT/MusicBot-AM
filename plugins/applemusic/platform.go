@@ -39,7 +39,7 @@ func (a *AppleMusicPlatform) Capabilities() platform.Capabilities {
 func (a *AppleMusicPlatform) Metadata() platform.Meta {
 	return platform.Meta{
 		Name:          "applemusic",
-		DisplayName:   "Apple Music",
+		DisplayName:   "Apple-Music",
 		Emoji:         "🍎",
 		Aliases:       []string{"applemusic", "apple", "am", "苹果音乐", "apple music"},
 		AllowGroupURL: true,
