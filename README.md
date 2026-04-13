@@ -8,6 +8,7 @@
 - 哔哩哔哩
 - 酷狗音乐
 - 汽水音乐
+- Apple Music
 
 > **原始项目**: [XiaoMengXinX/Music163bot-Go](https://github.com/XiaoMengXinX/Music163bot-Go)  
 > 本项目基于原项目进行了重构，采用插件化架构以支持多音乐平台。
@@ -191,6 +192,16 @@ concept_auto_refresh_enabled = false
 concept_auto_refresh_interval_sec = 21600
 ```
 
+#### Apple Music
+```ini
+[plugins.applemusic]
+enabled = true
+base_url = http://localhost:8080
+api_token = `YOUR_APPLEMUSIC_API_TOKEN`
+storefront = jp
+language = ja
+```
+
 管理员命令：
 
 - `/reload` 重载配置与插件
@@ -289,6 +300,11 @@ RecognizePort = 3737
 - `https://www.kugou.com/album/123456.html`
 - `https://www.kugou.com/songlist/gcid_xxxxx/`
 - `https://www.kugou.com/share/zlist.html?global_collection_id=...`
+
+**Apple Music**:
+- `https://music.apple.com/jp/song/.../<songId>`
+- `https://music.apple.com/jp/album/.../<albumId>?i=<songId>`
+- `https://music.apple.com/jp/artist/.../<artistId>`
 
 > 专辑/歌单链接会进入分页列表模式；简介默认以 Telegram 可折叠引用样式展示。
 
