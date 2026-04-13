@@ -11,7 +11,7 @@ import (
 
 func init() {
 	if err := platformplugins.Register("applemusic", buildContribution); err != nil {
-		panic(err)
+		panic(fmt.Sprintf("failed to register applemusic plugin: %v", err))
 	}
 }
 
