@@ -14,6 +14,8 @@ import (
 	"github.com/liuran001/MusicBot-Go/bot/httpproxy"
 )
 
+const defaultClientTimeout = 15 * time.Second
+
 type Client struct {
 	baseURL string
 	token   string
@@ -26,7 +28,7 @@ func NewClient(baseURL, token string, timeout time.Duration, logger bot.Logger) 
 		baseURL = "https://am.1641263.xyz"
 	}
 	if timeout <= 0 {
-		timeout = 15 * time.Second
+		timeout = defaultClientTimeout
 	}
 	retryClient := retryablehttp.NewClient()
 	retryClient.RetryMax = 2
@@ -46,7 +48,7 @@ func (c *Client) SetAPIProxy(cfg httpproxy.Config) error {
 	if c == nil || c.retry == nil {
 		return nil
 	}
-	timeout := 15 * time.Second
+	timeout := defaultClientTimeout
 	if c.retry.HTTPClient != nil && c.retry.HTTPClient.Timeout > 0 {
 		timeout = c.retry.HTTPClient.Timeout
 	}
