@@ -69,6 +69,9 @@ func (p *AppleMusicPlatform) GetDownloadInfo(ctx context.Context, trackID string
 		Size:    playback.Size,
 		Format:  format,
 		Quality: mapPlaybackQuality(playback.Codec),
+		Headers: map[string]string{
+			"Authorization": "Bearer " + p.client.token,
+		},
 	}, nil
 }
 

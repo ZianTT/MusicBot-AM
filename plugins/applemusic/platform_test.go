@@ -38,6 +38,9 @@ func TestPlatformGetDownloadInfoBuildsAbsoluteURL(t *testing.T) {
 	if info.Quality != platform.QualityLossless {
 		t.Fatalf("GetDownloadInfo() quality = %q", info.Quality)
 	}
+	if info.Headers["Authorization"] != "Bearer token" {
+		t.Fatalf("GetDownloadInfo() Authorization header = %q", info.Headers["Authorization"])
+	}
 }
 
 func TestPlatformGetPlaylistMapsAlbumTracks(t *testing.T) {
