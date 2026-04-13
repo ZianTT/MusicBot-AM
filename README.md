@@ -8,6 +8,7 @@
 - 哔哩哔哩
 - 酷狗音乐
 - 汽水音乐
+- Apple Music
 
 > **原始项目**: [XiaoMengXinX/Music163bot-Go](https://github.com/XiaoMengXinX/Music163bot-Go)  
 > 本项目基于原项目进行了重构，采用插件化架构以支持多音乐平台。
@@ -181,6 +182,14 @@ cookie = YOUR_QQMUSIC_COOKIE
 [plugins.soda]
 enabled = true
 cookie = `YOUR_SODA_COOKIE`
+```
+
+#### Apple Music
+```ini
+[plugins.applemusic]
+enabled = true
+token = YOUR_APPLE_MUSIC_API_TOKEN
+base_url = https://am.1641263.xyz
 ```
 
 #### 酷狗音乐
